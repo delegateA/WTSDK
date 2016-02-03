@@ -20,7 +20,24 @@
 #import "UIImage+WT.h"
 #import "RSKImageCropViewController.h"
 #import "IBActionSheet.h"
+
+#import <MapKit/MapKit.h>
 @implementation WTUtility
+
+
+/** 计算两个经纬的距离 */
++ (double)calculateDistanceWithLatitude:(NSString *)latitudeOne andLongitude:(NSString *)longitudeOne twoDistanceWithLatitude:(NSString *)latitudeTwo andLongitude:(NSString *)longitudeTwo{
+    CLLocation *orig=[[CLLocation alloc] initWithLatitude: latitudeOne.doubleValue longitude:longitudeOne.doubleValue];
+    CLLocation* dist=[[CLLocation alloc] initWithLatitude:latitudeTwo.doubleValue longitude:longitudeTwo.doubleValue];
+    
+    CLLocationDistance kilometers=[orig distanceFromLocation:dist]/1000;
+    WTLog(@"距离:%f",kilometers);
+    
+    return kilometers;
+
+}
+
+
 
 + (void)saveLastUserName:(NSString *)userName password:(NSString *)password {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

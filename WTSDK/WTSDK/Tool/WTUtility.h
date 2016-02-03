@@ -11,6 +11,13 @@
 #import "WTConst.h"
 @interface WTUtility : NSObject
 
+
+
+/** 计算两个经纬的距离 */
++ (double)calculateDistanceWithLatitude:(NSString *)latitudeOne andLongitude:(NSString *)longitudeOne twoDistanceWithLatitude:(NSString *)latitudeTwo andLongitude:(NSString *)longitudeTwo;
+
+
+
 + (void)saveUserInfoDic:(NSMutableDictionary *)dic;
 
 + (void)saveLastUserName:(NSString *)userName password:(NSString *)password;
