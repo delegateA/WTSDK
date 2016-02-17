@@ -122,7 +122,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     }
     if (img != -1) {
         HUD.mode = MBProgressHUDModeCustomView;
-        HUD.customView = [[UIImageView alloc] initWithImage:(img) ? ([UIImage imageNamed:@"Checkmark_success_white"]) : ([UIImage imageNamed:@"Checkmark_failure_white"])];
+        HUD.customView = [[UIImageView alloc] initWithImage:(img) ? ([UIImage imageNamed:@"checkmark_success_white"]) : ([UIImage imageNamed:@"checkmark_failure_white"])];
     }
     if (delay != -1) {
         if (delay == 0) {

@@ -36,8 +36,6 @@
 		576E1D8C1C55D19B004342C5 /* SVWebViewControllerActivitySafari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 576E1D311C55D19B004342C5 /* SVWebViewControllerActivitySafari@2x.png */; };
 		576E1D8D1C55D19B004342C5 /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D331C55D19B004342C5 /* SVWebViewControllerActivity.m */; };
 		576E1D8E1C55D19B004342C5 /* CALayer+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D381C55D19B004342C5 /* CALayer+WT.m */; };
-		576E1D8F1C55D19B004342C5 /* Checkmark_failure_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 576E1D391C55D19B004342C5 /* Checkmark_failure_white@2x.png */; };
-		576E1D901C55D19B004342C5 /* Checkmark_success_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 576E1D3A1C55D19B004342C5 /* Checkmark_success_white@2x.png */; };
 		576E1D911C55D19B004342C5 /* UIBarButtonItem+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D3C1C55D19B004342C5 /* UIBarButtonItem+WT.m */; };
 		576E1D921C55D19B004342C5 /* UIButton+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D3E1C55D19B004342C5 /* UIButton+WT.m */; };
 		576E1D931C55D19B004342C5 /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D401C55D19B004342C5 /* UIControl+BlocksKit.m */; };
@@ -69,6 +67,8 @@
 		576E1DBE1C55D3A4004342C5 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1DB81C55D3A4004342C5 /* RSKImageScrollView.m */; };
 		576E1DBF1C55D3A4004342C5 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1DBA1C55D3A4004342C5 /* RSKTouchView.m */; };
 		576E1DC01C55D3A4004342C5 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1DBC1C55D3A4004342C5 /* UIImage+FixOrientation.m */; };
+		57A549A31C747E500031021C /* checkmark_failure_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A549A11C747E500031021C /* checkmark_failure_white@2x.png */; };
+		57A549A41C747E500031021C /* checkmark_success_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A549A21C747E500031021C /* checkmark_success_white@2x.png */; };
 		57C10D131C20F61F00511EBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C10D121C20F61F00511EBC /* main.m */; };
 		57C10D161C20F61F00511EBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C10D151C20F61F00511EBC /* AppDelegate.m */; };
 		57C10D191C20F61F00511EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C10D181C20F61F00511EBC /* ViewController.m */; };
@@ -138,8 +138,6 @@
 		576E1D351C55D19B004342C5 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		576E1D371C55D19B004342C5 /* CALayer+WT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+WT.h"; sourceTree = "<group>"; };
 		576E1D381C55D19B004342C5 /* CALayer+WT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+WT.m"; sourceTree = "<group>"; };
-		576E1D391C55D19B004342C5 /* Checkmark_failure_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark_failure_white@2x.png"; sourceTree = "<group>"; };
-		576E1D3A1C55D19B004342C5 /* Checkmark_success_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark_success_white@2x.png"; sourceTree = "<group>"; };
 		576E1D3B1C55D19B004342C5 /* UIBarButtonItem+WT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WT.h"; sourceTree = "<group>"; };
 		576E1D3C1C55D19B004342C5 /* UIBarButtonItem+WT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WT.m"; sourceTree = "<group>"; };
 		576E1D3D1C55D19B004342C5 /* UIButton+WT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WT.h"; sourceTree = "<group>"; };
@@ -202,6 +200,8 @@
 		576E1DBA1C55D3A4004342C5 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
 		576E1DBB1C55D3A4004342C5 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
 		576E1DBC1C55D3A4004342C5 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		57A549A11C747E500031021C /* checkmark_failure_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark_failure_white@2x.png"; sourceTree = "<group>"; };
+		57A549A21C747E500031021C /* checkmark_success_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark_success_white@2x.png"; sourceTree = "<group>"; };
 		57C10D0E1C20F61F00511EBC /* WTSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C10D121C20F61F00511EBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57C10D141C20F61F00511EBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -349,10 +349,10 @@
 		576E1D361C55D19B004342C5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				57A549A11C747E500031021C /* checkmark_failure_white@2x.png */,
+				57A549A21C747E500031021C /* checkmark_success_white@2x.png */,
 				576E1D371C55D19B004342C5 /* CALayer+WT.h */,
 				576E1D381C55D19B004342C5 /* CALayer+WT.m */,
-				576E1D391C55D19B004342C5 /* Checkmark_failure_white@2x.png */,
-				576E1D3A1C55D19B004342C5 /* Checkmark_success_white@2x.png */,
 				576E1D3B1C55D19B004342C5 /* UIBarButtonItem+WT.h */,
 				576E1D3C1C55D19B004342C5 /* UIBarButtonItem+WT.m */,
 				576E1D3D1C55D19B004342C5 /* UIButton+WT.h */,
@@ -585,18 +585,18 @@
 				57C10D211C20F61F00511EBC /* LaunchScreen.storyboard in Resources */,
 				576E1DA61C55D19B004342C5 /* MarkImageBack_Right@2x.png in Resources */,
 				576E1DA51C55D19B004342C5 /* MarkImageBack_Left@2x.png in Resources */,
+				57A549A31C747E500031021C /* checkmark_failure_white@2x.png in Resources */,
 				576E1D811C55D19B004342C5 /* SVWebViewController.strings in Resources */,
 				57C10D1E1C20F61F00511EBC /* Assets.xcassets in Resources */,
 				576E1D851C55D19B004342C5 /* SVWebViewControllerActivityChrome-iPad.png in Resources */,
+				57A549A41C747E500031021C /* checkmark_success_white@2x.png in Resources */,
 				576E1D8A1C55D19B004342C5 /* SVWebViewControllerActivitySafari-iPad@2x.png in Resources */,
 				576E1D8C1C55D19B004342C5 /* SVWebViewControllerActivitySafari@2x.png in Resources */,
 				576E1D861C55D19B004342C5 /* SVWebViewControllerActivityChrome-iPad@2x.png in Resources */,
-				576E1D901C55D19B004342C5 /* Checkmark_success_white@2x.png in Resources */,
 				576E1D831C55D19B004342C5 /* SVWebViewController.bundle in Resources */,
 				576E1D881C55D19B004342C5 /* SVWebViewControllerActivityChrome@2x.png in Resources */,
 				57C10D1C1C20F61F00511EBC /* Main.storyboard in Resources */,
 				576E1D891C55D19B004342C5 /* SVWebViewControllerActivitySafari-iPad.png in Resources */,
-				576E1D8F1C55D19B004342C5 /* Checkmark_failure_white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,7 +787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WTSDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.zwt.com.WTSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -799,7 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WTSDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.zwt.com.WTSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
