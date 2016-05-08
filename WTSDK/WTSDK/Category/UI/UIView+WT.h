@@ -44,7 +44,7 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center);
 /**  加阴影 self.layer.shadowOffset = CGSizeMake(0, 2)self.layer.shadowOpacity = 0.2; */
 - (void)addShadow;
 
-typedef void (^GestureActionBlock)(UIGestureRecognizer *Ges);
+typedef void (^GestureActionBlock)(UIGestureRecognizer *ges);
 /** 单点击手势 */
 - (void)tapGesture:(GestureActionBlock)block;
 /** 长按手势 */
