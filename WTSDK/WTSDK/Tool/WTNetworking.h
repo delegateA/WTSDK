@@ -20,16 +20,30 @@
 
 
 @interface WTNetworking : NSObject
-
-+(void)get:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
-
-
-+(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation,NSError *error))failure;
+//2.0
+//+(void)get:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
 
 
-+(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr constructingBodyWithBlock:(void (^)(id  formData))constructingBodyWithBlock  success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+//2.0
+//+(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation,NSError *error))failure;
 
 
-//+(void)WeChatLogin:(NSString *)code result:(void(^)(NSDictionary *GetDic))result failure:(void(^)())failure;
+
+//2.0
+//+(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPRequestOperationManager *)mgr constructingBodyWithBlock:(void (^)(id  formData))constructingBodyWithBlock  success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+
+
+
+//+(void)weChatLogin:(NSString *)code result:(void(^)(NSDictionary *GetDic))result failure:(void(^)())failure;
+
+//--------------------------👇updateAF3.0----------------------------//
+
++(void)get:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPSessionManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
+
+
++(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPSessionManager *)mgr success:(void (^)(id responseObject))success failure:(void(^)(NSURLSessionDataTask *task,NSError *error))failure;
+
+
++(void)post:(NSString *)url params:(NSDictionary *)params mgr:(AFHTTPSessionManager *)mgr constructingBodyWithBlock:(void (^)(id  formData))constructingBodyWithBlock  success:(void (^)(id responseObject))success failure:(void(^)(NSError *error))failure;
 
 @end
