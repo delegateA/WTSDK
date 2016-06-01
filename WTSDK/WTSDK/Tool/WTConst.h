@@ -109,15 +109,3 @@
 #define iPhone6Plus_Screen         (WTDeviceWidth == 414 ? 1 : 0)
 
 
-
-
-//😂云在身边的通知名称
-#define WTLocationNotification           @"WTLocationNotification"
-
-//催单时间更新通知
-#define WTReminderTimeNotification           @"WTReminderTimeNotification"
-
-//订单更新通知
-#define WTOrderUpdateNotification           @"WTOrderUpdateNotification"
-//便利店的物品变啦😇
-#define WTConvenienceUpdateNotification           @"WTConvenienceUpdateNotification"
