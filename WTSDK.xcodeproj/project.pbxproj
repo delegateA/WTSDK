@@ -22,8 +22,6 @@
 		576E1D9C1C55D19B004342C5 /* UIViewController+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D521C55D19B004342C5 /* UIViewController+WT.m */; };
 		576E1D9F1C55D19B004342C5 /* WTConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D5C1C55D19B004342C5 /* WTConst.m */; };
 		576E1DA31C55D19B004342C5 /* WTUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D641C55D19B004342C5 /* WTUtility.m */; };
-		576E1DA71C55D19B004342C5 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D6F1C55D19B004342C5 /* CustomIOSAlertView.m */; };
-		576E1DA81C55D19B004342C5 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D711C55D19B004342C5 /* CWStarRateView.m */; };
 		576E1DAA1C55D19B004342C5 /* WTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D751C55D19B004342C5 /* WTTextField.m */; };
 		576E1DAB1C55D19B004342C5 /* WTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D771C55D19B004342C5 /* WTTextView.m */; };
 		576E1DAC1C55D19B004342C5 /* WTTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D791C55D19B004342C5 /* WTTitleButton.m */; };
@@ -69,10 +67,6 @@
 		576E1D5C1C55D19B004342C5 /* WTConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConst.m; sourceTree = "<group>"; };
 		576E1D631C55D19B004342C5 /* WTUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUtility.h; sourceTree = "<group>"; };
 		576E1D641C55D19B004342C5 /* WTUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtility.m; sourceTree = "<group>"; };
-		576E1D6E1C55D19B004342C5 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
-		576E1D6F1C55D19B004342C5 /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
-		576E1D701C55D19B004342C5 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
-		576E1D711C55D19B004342C5 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		576E1D741C55D19B004342C5 /* WTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTextField.h; sourceTree = "<group>"; };
 		576E1D751C55D19B004342C5 /* WTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTextField.m; sourceTree = "<group>"; };
 		576E1D761C55D19B004342C5 /* WTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTextView.h; sourceTree = "<group>"; };
@@ -187,10 +181,6 @@
 		576E1D6D1C55D19B004342C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				576E1D6E1C55D19B004342C5 /* CustomIOSAlertView.h */,
-				576E1D6F1C55D19B004342C5 /* CustomIOSAlertView.m */,
-				576E1D701C55D19B004342C5 /* CWStarRateView.h */,
-				576E1D711C55D19B004342C5 /* CWStarRateView.m */,
 				576E1D741C55D19B004342C5 /* WTTextField.h */,
 				576E1D751C55D19B004342C5 /* WTTextField.m */,
 				576E1D761C55D19B004342C5 /* WTTextView.h */,
@@ -327,7 +317,6 @@
 				576E1D9B1C55D19B004342C5 /* UIView+WT.m in Sources */,
 				576E1D911C55D19B004342C5 /* UIBarButtonItem+WT.m in Sources */,
 				576E1D7C1C55D19B004342C5 /* NSArray+WT.m in Sources */,
-				576E1DA81C55D19B004342C5 /* CWStarRateView.m in Sources */,
 				576E1D801C55D19B004342C5 /* NSTimer+WT.m in Sources */,
 				57C10D191C20F61F00511EBC /* ViewController.m in Sources */,
 				576E1D7D1C55D19B004342C5 /* NSDate+WT.m in Sources */,
@@ -346,7 +335,6 @@
 				576E1DA31C55D19B004342C5 /* WTUtility.m in Sources */,
 				576E1DAA1C55D19B004342C5 /* WTTextField.m in Sources */,
 				576E1D8E1C55D19B004342C5 /* CALayer+WT.m in Sources */,
-				576E1DA71C55D19B004342C5 /* CustomIOSAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
