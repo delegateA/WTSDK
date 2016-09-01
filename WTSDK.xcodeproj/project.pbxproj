@@ -24,7 +24,6 @@
 		576E1DA31C55D19B004342C5 /* WTUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D641C55D19B004342C5 /* WTUtility.m */; };
 		576E1DAA1C55D19B004342C5 /* WTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D751C55D19B004342C5 /* WTTextField.m */; };
 		576E1DAB1C55D19B004342C5 /* WTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D771C55D19B004342C5 /* WTTextView.m */; };
-		576E1DAC1C55D19B004342C5 /* WTTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D791C55D19B004342C5 /* WTTitleButton.m */; };
 		57A549A31C747E500031021C /* checkmark_failure_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A549A11C747E500031021C /* checkmark_failure_white@2x.png */; };
 		57A549A41C747E500031021C /* checkmark_success_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A549A21C747E500031021C /* checkmark_success_white@2x.png */; };
 		57C10D131C20F61F00511EBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C10D121C20F61F00511EBC /* main.m */; };
@@ -71,8 +70,6 @@
 		576E1D751C55D19B004342C5 /* WTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTextField.m; sourceTree = "<group>"; };
 		576E1D761C55D19B004342C5 /* WTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTextView.h; sourceTree = "<group>"; };
 		576E1D771C55D19B004342C5 /* WTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTextView.m; sourceTree = "<group>"; };
-		576E1D781C55D19B004342C5 /* WTTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTitleButton.h; sourceTree = "<group>"; };
-		576E1D791C55D19B004342C5 /* WTTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTitleButton.m; sourceTree = "<group>"; };
 		57A549A11C747E500031021C /* checkmark_failure_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark_failure_white@2x.png"; sourceTree = "<group>"; };
 		57A549A21C747E500031021C /* checkmark_success_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark_success_white@2x.png"; sourceTree = "<group>"; };
 		57C10D0E1C20F61F00511EBC /* WTSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,8 +182,6 @@
 				576E1D751C55D19B004342C5 /* WTTextField.m */,
 				576E1D761C55D19B004342C5 /* WTTextView.h */,
 				576E1D771C55D19B004342C5 /* WTTextView.m */,
-				576E1D781C55D19B004342C5 /* WTTitleButton.h */,
-				576E1D791C55D19B004342C5 /* WTTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,7 +325,6 @@
 				576E1D9C1C55D19B004342C5 /* UIViewController+WT.m in Sources */,
 				576E1D921C55D19B004342C5 /* UIButton+WT.m in Sources */,
 				57C10D131C20F61F00511EBC /* main.m in Sources */,
-				576E1DAC1C55D19B004342C5 /* WTTitleButton.m in Sources */,
 				576E1DAB1C55D19B004342C5 /* WTTextView.m in Sources */,
 				576E1DA31C55D19B004342C5 /* WTUtility.m in Sources */,
 				576E1DAA1C55D19B004342C5 /* WTTextField.m in Sources */,
