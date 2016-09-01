@@ -208,34 +208,31 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     return self.center.y;
 }
 
-
--(CGFloat)radius{
+- (CGFloat)radius {
     return self.layer.cornerRadius;
 }
 
--(void)setRadius:(CGFloat)radius{
-    if(radius<=0) {radius = self.width * 0.5f;}
+- (void)setRadius:(CGFloat)radius {
+    if (radius <= 0) {
+        radius = self.width * 0.5f;
+    }
     self.layer.cornerRadius = radius;
     self.layer.masksToBounds = YES;
 }
 
-
--(UIViewController *)viewController
-{
+- (UIViewController *)viewController {
     UIResponder *next = self.nextResponder;
     while (next != nil) {
         if ([next isKindOfClass:[UIViewController class]]) {
-            
-            return (UIViewController *)next;
+
+            return (UIViewController *) next;
         }
-        
+
         next = next.nextResponder;
     }
-    
+
     return nil;
 }
-
-
 
 //变圆
 - (UIView *)roundV {
@@ -258,10 +255,10 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     [self addGestureRecognizer:TapGesture];
 }
 /** 添加边框:四边 */
-- (void)border:(UIColor *)color width:(CGFloat)width CornerRadius:(CGFloat)radius{
+- (void)border:(UIColor *)color width:(CGFloat)width CornerRadius:(CGFloat)radius {
     if (radius == 0) {
         [self border:color width:width];
-    }else{
+    } else {
         CALayer *layer = self.layer;
         if (color != nil) {
             layer.borderColor = color.CGColor;
@@ -272,12 +269,11 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     }
 }
 /** 四边变圆 */
-- (void)borderRoundCornerRadius:(CGFloat)radius{
-        CALayer *layer = self.layer;
+- (void)borderRoundCornerRadius:(CGFloat)radius {
+    CALayer *layer = self.layer;
 
-        layer.cornerRadius = radius;
-        layer.masksToBounds = YES;
-    
+    layer.cornerRadius = radius;
+    layer.masksToBounds = YES;
 }
 //添加边框
 - (void)border:(UIColor *)color width:(CGFloat)width;
@@ -291,11 +287,10 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center) {
     layer.borderWidth = width;
 }
 
-- (void)borderRound{
+- (void)borderRound {
     CALayer *layer = self.layer;
     layer.cornerRadius = 4;
     layer.masksToBounds = YES;
-
 }
 
 /** 移除对应的view */

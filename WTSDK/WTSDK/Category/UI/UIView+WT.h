@@ -35,7 +35,7 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center);
 - (void)scaleBy:(CGFloat)scaleFactor;
 - (void)fitInSize:(CGSize)aSize;
 /** 获取View所在的控制器 */
--(UIViewController *)viewController;
+- (UIViewController *)viewController;
 
 #pragma mark - 其它的效果😎
 
@@ -65,7 +65,6 @@ typedef void (^GestureActionBlock)(UIGestureRecognizer *ges);
 
 /** 画线 */
 + (CAShapeLayer *)drawLine:(CGPoint)points to:(CGPoint)pointe color:(UIColor *)color;
-
 
 /** 画框框线 */
 + (CAShapeLayer *)drawRect:(CGRect)rect radius:(CGFloat)redius color:(UIColor *)color;

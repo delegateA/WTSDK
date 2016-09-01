@@ -6,11 +6,30 @@
 //  Copyright © 2015年 zwt. All rights reserved.
 //
 
-#import "WTTextField.h"
 #import "NSString+WT.h"
+#import "WTTextField.h"
 #import <objc/runtime.h>
 static const char *PlaceLabel = "PlaceLabel";
 @implementation WTTextField
+
+//重载方法，控制弹出选项
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(paste:)) //过滤粘贴操作
+    {
+        return NO;
+    } else if (action == @selector(copy:)) //过滤赋值操作
+    {
+        return NO;
+    } else if (action == @selector(select:)) //过滤选择操作
+    {
+        return NO;
+    } else if (action == @selector(selectAll:)) //过滤选择全部操作
+    {
+        return NO;
+    }
+    //其它的操作不过滤
+    return [super canPerformAction:action withSender:sender];
+}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -33,14 +52,14 @@ static const char *PlaceLabel = "PlaceLabel";
     } else {
     }
 }
-
-- (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectInset(bounds, 8, 0);
-}
-
-- (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectInset(bounds, 8, 0);
-}
+#pragma mark - 这里可以控制里面文字的间距
+//- (CGRect)editingRectForBounds:(CGRect)bounds {
+//    return CGRectInset(bounds, 8, 0);
+//}
+//
+//- (CGRect)textRectForBounds:(CGRect)bounds {
+//    return CGRectInset(bounds, 8, 0);
+//}
 
 - (UILabel *)placeHolderLabel {
     return objc_getAssociatedObject(self, PlaceLabel);
@@ -58,11 +77,11 @@ static const char *PlaceLabel = "PlaceLabel";
     [self addSubview:La];
     [self setPlaceHolderLabel:La];
     //    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TextFieldChange) name:UITextFieldTextDidChangeNotification object:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TextFieldChange) name:UITextFieldTextDidEndEditingNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChange) name:UITextFieldTextDidChangeNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChange) name:UITextFieldTextDidEndEditingNotification object:self];
 }
 
-- (void)TextFieldChange {
+- (void)textFieldChange {
     [self placeHolderLabel].hidden = self.text.length;
 }
 

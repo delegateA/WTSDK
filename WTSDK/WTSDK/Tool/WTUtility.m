@@ -6,38 +6,29 @@
 //  Copyright © 2015年 zwt. All rights reserved.
 //
 
+#import "SystemConfiguration/SystemConfiguration.h"
+#import "UIImage+WT.h"
 #import "WTUtility.h"
+#import <AVFoundation/AVFoundation.h>
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonDigest.h>
-
-#import "SystemConfiguration/SystemConfiguration.h"
-#include <netdb.h>
+#import <MapKit/MapKit.h>
 #import <mach/mach_time.h>
-
-#import <AVFoundation/AVFoundation.h>
+#include <netdb.h>
 
 #define ORIGINAL_MAX_WIDTH 640.0f
-#import "UIImage+WT.h"
-#import "RSKImageCropViewController.h"
-#import "IBActionSheet.h"
-
-#import <MapKit/MapKit.h>
 @implementation WTUtility
 
-
 /** 计算两个经纬的距离 */
-+ (double)calculateDistanceWithLatitude:(NSString *)latitudeOne andLongitude:(NSString *)longitudeOne twoDistanceWithLatitude:(NSString *)latitudeTwo andLongitude:(NSString *)longitudeTwo{
-    CLLocation *orig=[[CLLocation alloc] initWithLatitude: latitudeOne.doubleValue longitude:longitudeOne.doubleValue];
-    CLLocation* dist=[[CLLocation alloc] initWithLatitude:latitudeTwo.doubleValue longitude:longitudeTwo.doubleValue];
-    
-    CLLocationDistance kilometers=[orig distanceFromLocation:dist]/1000;
-    WTLog(@"距离:%f",kilometers);
-    
++ (double)calculateDistanceWithLatitude:(NSString *)latitudeOne andLongitude:(NSString *)longitudeOne twoDistanceWithLatitude:(NSString *)latitudeTwo andLongitude:(NSString *)longitudeTwo {
+    CLLocation *orig = [[CLLocation alloc] initWithLatitude:latitudeOne.doubleValue longitude:longitudeOne.doubleValue];
+    CLLocation *dist = [[CLLocation alloc] initWithLatitude:latitudeTwo.doubleValue longitude:longitudeTwo.doubleValue];
+
+    CLLocationDistance kilometers = [orig distanceFromLocation:dist] / 1000;
+    NSLog(@"距离:%f", kilometers);
+
     return kilometers;
-
 }
-
-
 
 + (void)saveLastUserName:(NSString *)userName password:(NSString *)password {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -147,18 +138,6 @@ void Code_RunTime(int times, void (^block)(void)) {
         }
     });
 }
-/**
- *  发通知
- */
-void post_Notification(NSString *notification) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil];
-}
-/**
- *  收通知
- */
-void add_Notification(id Obs, SEL Sel, NSString *notification, id Obj) {
-    [[NSNotificationCenter defaultCenter] addObserver:Obs selector:Sel name:notification object:Obj];
-}
 
 /**
  *  延迟执行
@@ -214,23 +193,6 @@ void after_Run(float time, void (^block)(void)) {
     return money;
 }
 
-////导航栏目的返回键
-//+(WTButton*)createNavBackBtn{
-//    WTButton *Nav_Btn;
-//    if (iPhone6Plus_Screen) {
-//        Nav_Btn = [[WTButton alloc]initWithFrame:CGRectMake(0, 5, 100, 45) ImgF:CGRectMake(12, 6.0, 21, 21) TitF:CGRectMake(32, 9.0, 68, 15)];
-//    }else{
-//        Nav_Btn = [[WTButton alloc]initWithFrame:CGRectMake(0, 5, 100, 45) ImgF:CGRectMake(7.9, 5.8, 21, 21) TitF:CGRectMake(32, 8.8, 68, 15)];
-//    }
-//    [Nav_Btn setImage:[UIImage imageNamed:@"EVGONavBack"] forState:UIControlStateNormal];
-//    [Nav_Btn setTitle:@"" forState:UIControlStateNormal];
-//    Nav_Btn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-//    Nav_Btn.titleLabel.textAlignment = NSTextAlignmentLeft;
-//    [Nav_Btn setTitleColor:EVGO_Color_Title_Gray forState:UIControlStateNormal];
-//    [Nav_Btn setTitleColor:EVGO_Color_Title forState:UIControlStateHighlighted];
-//    return Nav_Btn;
-//}
-
 //提示框
 + (void)showAlertViewWithTitleText:(NSString *)title andMessage:(NSString *)message {
     [[WTHandleCommon shareCommonHandleClass] showAlertView:title showMessage:message]; //单例用于解决同时显示多个alterView
@@ -246,7 +208,7 @@ void after_Run(float time, void (^block)(void)) {
     va_start(args, otherbtn);
     if (otherbtn) {
         NSObject *other;
-        while ((other = va_arg(args, NSObject *) )) {
+        while ((other = va_arg(args, NSObject *))) {
             //otherBtn最后面 要加 nil
             [arr addObject:(NSString *) other];
         }
@@ -289,164 +251,6 @@ void after_Run(float time, void (^block)(void)) {
         [result appendString:[sourceString substringWithRange:NSMakeRange(rand() % [sourceString length], 1)]];
     }
     return result;
-}
-
-@end
-
-#pragma mark - WTHandleCommon  AlertView
-
-typedef void (^indexBtnClickBlock)(int);
-
-typedef NS_ENUM(NSInteger, AlertType) {
-    AlertViewUseBlock = 1,
-};
-
-@interface WTHandleCommon () {
-    BOOL _isShowAlterView;
-    indexBtnClickBlock _indexBtnClickBlock;
-}
-
-@end
-;
-@implementation WTHandleCommon
-static WTHandleCommon *instance;
-
-+ (id)allocWithZone:(struct _NSZone *)zone {
-    static WTHandleCommon *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [super allocWithZone:zone];
-    });
-
-    return instance;
-}
-
-+ (instancetype)shareCommonHandleClass {
-    return [[self alloc] init];
-}
-
-- (void)showAlertView:(NSString *)title showMessage:(NSString *)message {
-    if (!_isShowAlterView) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        _isShowAlterView = YES;
-    }
-}
-
-- (void)showAlertView:(NSString *)title showMessage:(NSString *)message cancleBtn:(NSString *)cancletitle otherBtn:(NSMutableArray *)arr completionBlock:(void (^)())completionBlock {
-    self.alertWT = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancletitle otherButtonTitles:nil];
-    for (NSString *btntitle in arr) {
-        [self.alertWT addButtonWithTitle:btntitle];
-    }
-    self.alertWT.tag = AlertViewUseBlock;
-    [self.alertWT show];
-    _indexBtnClickBlock = completionBlock;
-}
-
-- (void)hideAlertView {
-    [self.alertWT dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    _isShowAlterView = NO;
-
-    if (_indexBtnClickBlock != nil && alertView.tag == AlertViewUseBlock) {
-        (_indexBtnClickBlock((int) buttonIndex));
-        _indexBtnClickBlock = nil;
-    }
-}
-
-#pragma mark - 相机获取图片相关
-+ (WTHandleCommon *)readlyToPick_Vc:(UIViewController *)vc roundImg:(BOOL)round pick:(PickImgBlock)block {
-    WTHandleCommon *Picker = [WTHandleCommon shareCommonHandleClass];
-    Picker.superVC = vc;
-    Picker.pickImgBlock = block;
-    Picker.roundImg = round;
-    return Picker;
-}
-
-//搞张图片 默认 @"拍照",@"从相册中选择" 返回修改过大小的图片 title 标题而已 vc    self 是否圆形选择图片？
-+ (void)cameraPick_Img:(NSString *)title vc:(UIViewController *)vc roundImg:(BOOL)round pick:(PickImgBlock)block {
-    [vc.view endEditing:YES];
-    [WTHandleCommon readlyToPick_Vc:vc roundImg:round pick:block];
-    IBActionSheet *Ibac = [[IBActionSheet alloc] initWithTitle:title
-                                                      callback:^(IBActionSheet *actionSheet, NSInteger buttonIndex) {
-                                                          if (buttonIndex == 0) {
-                                                              [[WTHandleCommon shareCommonHandleClass] choosePhoto:UIImagePickerControllerSourceTypeCamera edit:YES];
-                                                          } else if (buttonIndex == 1) {
-                                                              [[WTHandleCommon shareCommonHandleClass] choosePhoto:UIImagePickerControllerSourceTypePhotoLibrary edit:YES];
-                                                          }
-                                                      }
-                                             cancelButtonTitle:@"取消"
-                                        destructiveButtonTitle:nil
-                                             otherButtonTitles:@"拍照", @"从相册中选择", nil];
-    [Ibac showInView:vc.navigationController.view];
-}
-+ (void)cameraPickImg_Type:(UIImagePickerControllerSourceType)type vc:(UIViewController *)vc roundImg:(BOOL)round edit:(BOOL)edit pick:(PickImgBlock)block {
-    [[WTHandleCommon readlyToPick_Vc:vc roundImg:round pick:block] choosePhoto:type edit:edit];
-}
-
-//@"拍照",@"从相册中选择"
-- (void)choosePhoto:(UIImagePickerControllerSourceType)choosetype edit:(BOOL)edit {
-    if (![UIImagePickerController isSourceTypeAvailable:choosetype]) {
-        return;
-    }
-    //如果使用相机的 拍照
-    if (choosetype == UIImagePickerControllerSourceTypeCamera) {
-        //无可用相机 或 用户设置的权限阻拦
-        if (![WTHandleCommon canUseCamera] || ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            return;
-        }
-    }
-
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.allowsEditing = self.allowsEdit = self.roundImg ? NO : edit;
-    picker.delegate = (id<UINavigationControllerDelegate, UIImagePickerControllerDelegate>) self;
-    picker.sourceType = choosetype;
-    [self.superVC presentViewController:picker
-                               animated:YES
-                             completion:^{
-                                 //        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];//如果有必要 前后结束设置 系统状态栏文本的颜色
-                             }];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *fixImg = [self.allowsEdit ? [info objectForKey:UIImagePickerControllerEditedImage] : [info objectForKey:UIImagePickerControllerOriginalImage] allowMaxImg_thum:NO];
-    if (self.roundImg) {
-        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:fixImg cropMode:RSKImageCropModeCircle];
-        imageCropVC.delegate = (id<RSKImageCropViewControllerDelegate>) self;
-        [picker pushViewController:imageCropVC animated:YES];
-
-        return;
-    }
-    if (self.pickImgBlock) {
-        self.pickImgBlock(fixImg, picker);
-    }
-    if (![NSStringFromClass([_superVC class]) isEqualToString:@"😛 写你想要的类 😛"]) {
-        [picker dismissViewControllerAnimated:YES
-                                   completion:^{
-                                   }];
-    }
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];//如果有必要 前后结束设置 系统状态栏文本的颜色
-    [picker dismissViewControllerAnimated:YES
-                               completion:^{
-                               }];
-}
-//RSKImageCropViewController 的 回调
-- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller {
-    [controller.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage {
-    if (self.pickImgBlock) {
-        self.pickImgBlock(croppedImage, nil);
-    }
-    [controller dismissViewControllerAnimated:YES
-                                   completion:^{
-                                   }];
 }
 
 /**

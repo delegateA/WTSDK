@@ -13,9 +13,9 @@
 /**
  *  颤抖效果
  */
--(CAAnimation *)shakeFunction{
+- (CAAnimation *)shakeFunction {
     CAKeyframeAnimation *shake = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    shake.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-5.0f, 0.0f, 0.0f)], [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(5.0f, 0.0f, 0.0f)]];
+    shake.values = @[ [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-5.0f, 0.0f, 0.0f)], [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(5.0f, 0.0f, 0.0f)] ];
     shake.autoreverses = YES;
     shake.repeatCount = 2.0f;
     shake.duration = 0.07f;
@@ -26,18 +26,18 @@
 /**
  *  渐显效果
  */
--(CATransition*)fadeFunction{
+- (CATransition *)fadeFunction {
     return [self fadeFunction:0.4];
 }
 
 /**
  *  渐显效果 效果时间
  */
--(CATransition*)fadeFunction:(CGFloat)time{
+- (CATransition *)fadeFunction:(CGFloat)time {
     CATransition *animation = [CATransition animation];
     [animation setDuration:time];
-    [animation setType: kCATransitionFade];
-    [animation setSubtype: kCATransitionFromRight];
+    [animation setType:kCATransitionFade];
+    [animation setSubtype:kCATransitionFromRight];
     [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
     [self addAnimation:animation forKey:nil];
     return animation;
@@ -46,10 +46,10 @@
 /**
  *  缩放效果
  */
--(CAKeyframeAnimation *)transformScaleFunction{
+- (CAKeyframeAnimation *)transformScaleFunction {
     CAKeyframeAnimation *transformscale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-    transformscale.values = @[@(0),@(0.5),@(1.08)];
-    transformscale.keyTimes = @[@(0.0),@(0.2),@(0.3)];
+    transformscale.values = @[ @(0), @(0.5), @(1.08) ];
+    transformscale.keyTimes = @[ @(0.0), @(0.2), @(0.3) ];
     transformscale.calculationMode = kCAAnimationLinear;
     [self addAnimation:transformscale forKey:nil];
     return transformscale;
@@ -58,19 +58,19 @@
 /**
  *  简3D动画吧
  */
--(CAAnimation *)anim_revers:(AnimReverDirection)direction duration:(NSTimeInterval)duration isReverse:(BOOL)isReverse repeatCount:(NSUInteger)repeatCount{
+- (CAAnimation *)anim_revers:(AnimReverDirection)direction duration:(NSTimeInterval)duration isReverse:(BOOL)isReverse repeatCount:(NSUInteger)repeatCount {
     NSString *key = @"reversAnim";
-    if([self animationForKey:key]!=nil){
+    if ([self animationForKey:key] != nil) {
         [self removeAnimationForKey:key];
     }
     NSString *directionStr = nil;
-    if(AnimReverDirectionX == direction)directionStr=@"x";
-    if(AnimReverDirectionY == direction)directionStr=@"y";
-    if(AnimReverDirectionZ == direction)directionStr=@"z";
+    if (AnimReverDirectionX == direction) directionStr = @"x";
+    if (AnimReverDirectionY == direction) directionStr = @"y";
+    if (AnimReverDirectionZ == direction) directionStr = @"z";
     //创建普通动画
-    CABasicAnimation *reversAnim = [CABasicAnimation animationWithKeyPath:[NSString stringWithFormat:@"transform.rotation.%@",directionStr]];
+    CABasicAnimation *reversAnim = [CABasicAnimation animationWithKeyPath:[NSString stringWithFormat:@"transform.rotation.%@", directionStr]];
     //起点值
-    reversAnim.fromValue=@(0);
+    reversAnim.fromValue = @(0);
     //终点值
     reversAnim.toValue = @(M_PI_2);
     //时长
@@ -83,9 +83,8 @@
     reversAnim.repeatCount = repeatCount;
     //添加
     [self addAnimation:reversAnim forKey:key];
-    
+
     return reversAnim;
 }
-
 
 @end

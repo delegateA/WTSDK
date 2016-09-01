@@ -8,20 +8,19 @@
 
 #import "UIViewController+WT.h"
 #import <objc/runtime.h>
-#import "SVWebViewController.h"
 static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
 @implementation UIViewController (WT)
 
 /**
  *  self.navigationController
  */
-- (UINavigationController *)Nav {
+- (UINavigationController *)nav {
     UINavigationController *nav = self.navigationController;
     return nav ? nav : self.tabBarController.navigationController;
 }
 
 - (UIViewController *)VcWithClassStr:(NSString *)ClassStr {
-    UINavigationController *CurrentNav = (UINavigationController *) ([self isKindOfClass:[UINavigationController class]] ? (self) : (self.Nav));
+    UINavigationController *CurrentNav = (UINavigationController *) ([self isKindOfClass:[UINavigationController class]] ? (self) : (self.nav));
     for (UIViewController *vc in [CurrentNav.viewControllers reverseObjectEnumerator]) {
         if ([vc isKindOfClass:[UITabBarController class]]) {
             UITabBarController *Tab = (UITabBarController *) vc;
@@ -42,10 +41,10 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
  *  self.Nav 默认动画 pushViewController:vc animated:YES
  */
 - (void)pushVc:(UIViewController *)vc {
-    [self.Nav pushViewController:vc animated:YES];
+    [self.nav pushViewController:vc animated:YES];
 }
 - (void)pushVcStr:(NSString *)vcstr {
-    [self.Nav pushViewController:[[NSClassFromString(vcstr) alloc] init] animated:YES];
+    [self.nav pushViewController:[[NSClassFromString(vcstr) alloc] init] animated:YES];
 }
 /**
  * 构建 rightBarButtonItem title
@@ -104,8 +103,8 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
  * 显示文本    img -1 不显示图片 1成功 0失败  延迟消失
  */
 - (void)showHUD:(NSString *)text touch:(BOOL)touch img:(NSInteger)img delay:(CGFloat)delay {
-//         MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
-    
+    //         MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+
     [self.HUD hide:YES];
     MBProgressHUD *HUD;
     if ([self isKindOfClass:[UITableViewController class]] || [self isKindOfClass:[UICollectionView class]]) {
@@ -115,7 +114,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     }
     HUD.userInteractionEnabled = !touch;
     HUD.removeFromSuperViewOnHide = YES;
-    HUD.yOffset = -73.0f;
+    //    HUD.yOffset = -10.0f;
     if (text) {
         HUD.mode = MBProgressHUDModeText;
         HUD.labelText = text;
@@ -144,7 +143,7 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     //    [[self HUD] hide:YES];
 }
 #pragma clang diagnostic pop
-
+//
 - (void)touchesBegan:(nonnull NSSet *)touches withEvent:(nullable UIEvent *)event {
     [self.view endEditing:YES];
 }
@@ -159,12 +158,6 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     } else {
         [self showHUD:@"这打不了电话 😅" img:0 de:1.28];
     }
-}
-
-/** 打开个网页 */
-- (void)openHttpUrl:(NSString *)link {
-    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [link hasPrefix:@"http"] ? @"" : @"http://", link]]];
-    [self.Nav pushViewController:webViewController animated:YES];
 }
 
 #pragma mark -  push 动画
@@ -241,40 +234,6 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
         [self.navigationController pushViewController:vc animated:NO];
         [[self.navigationController.view layer] addAnimation:animation forKey:@"animation"];
     }
-}
-
-@end
-
-#pragma mark -
-
-@implementation UINavigationController (ShouldPopOnBackButton)
-
-- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
-    if ([self.viewControllers count] < [navigationBar.items count]) {
-        return YES;
-    }
-    BOOL shouldPop = YES;
-    UIViewController *vc = [self topViewController];
-    if ([vc respondsToSelector:@selector(WT_Nav_BackBtnClick)]) {
-        shouldPop = [vc WT_Nav_BackBtnClick];
-    }
-
-    if (shouldPop) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self popViewControllerAnimated:YES];
-        });
-    } else {
-        for (UIView *subview in [navigationBar subviews]) {
-            if (subview.alpha < 1.) {
-                [UIView animateWithDuration:.25
-                                 animations:^{
-                                     subview.alpha = 1.;
-                                 }];
-            }
-        }
-    }
-
-    return NO;
 }
 
 @end

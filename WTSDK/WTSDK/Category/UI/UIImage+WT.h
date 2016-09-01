@@ -8,18 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-
 static const void *CompleteBlockKey = &CompleteBlockKey;
 static const void *FailBlockKey = &FailBlockKey;
 
 @interface UIImage ()
 
-@property (nonatomic,copy)  void(^CompleteBlock)();
+@property (nonatomic, copy) void (^CompleteBlock)();
 
-@property (nonatomic,copy)  void(^FailBlock)();
+@property (nonatomic, copy) void (^FailBlock)();
 
 @end
-
 
 @interface UIImage (WT)
 

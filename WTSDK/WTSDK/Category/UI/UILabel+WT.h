@@ -11,10 +11,10 @@
 @interface UILabel (WT)
 
 /** 创建一个 */
-+(UILabel*)newSingleFrame:(CGRect)frame  title:(NSString*)title fontS:(CGFloat)fonts color:(UIColor*)color;
++ (UILabel *)newSingleFrame:(CGRect)frame title:(NSString *)title fontS:(CGFloat)fonts color:(UIColor *)color;
 
 /** 有删除线的 */
--(void)delLineStr:(NSString*)string;
+- (void)delLineStr:(NSString *)string;
 /** 有下划线的 */
--(void)underlineStr:(NSString*)string;
+- (void)underlineStr:(NSString *)string;
 @end

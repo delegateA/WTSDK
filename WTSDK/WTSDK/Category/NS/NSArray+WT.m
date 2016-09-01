@@ -9,11 +9,11 @@
 #import "NSArray+WT.h"
 @implementation NSArray (WT)
 
-- (id)jobjAt:(NSUInteger)index {
+- (id)objectAtIndexCheck:(NSUInteger)index {
     if (index < self.count) {
         return self[index];
     } else {
-        NSAssert(0, @"数组越界");
+        //数组越界了就返回nil
         return nil;
     }
 }
@@ -38,7 +38,7 @@
 }
 
 /**
- *  》》》请接收返回的数组《《《  按 字段 给数组排序
+ *  请接收返回的数组 按 字段 给数组排序
  */
 - (NSArray *)sortbyKey:(NSString *)key asc:(BOOL)ascend {
     return [self sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:key ascending:ascend]]];
@@ -86,13 +86,3 @@
 
 @end
 
-@implementation NSMutableArray (WT)
-
-- (void)addObj:(id)obj {
-    NSAssert(obj != nil, @"nilwhat");
-    if (obj != nil) {
-        [self addObject:obj];
-    }
-}
-
-@end

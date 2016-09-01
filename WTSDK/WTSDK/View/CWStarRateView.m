@@ -22,7 +22,7 @@
 /**
  *  当前进度 默认多少个星星
  */
-@property (nonatomic,assign) CGFloat currentP;
+@property (nonatomic, assign) CGFloat currentP;
 
 @end
 
@@ -50,7 +50,6 @@
     if (self = [super initWithFrame:frame]) {
         _numberOfStars = numberOfStars;
         [self buildDataAndUI];
-       
     }
     return self;
 }
@@ -58,17 +57,17 @@
 #pragma mark - Private Methods
 
 - (void)buildDataAndUI {
-     _currentP = 0;//默认为0 这里可以设置默认星级
-    _scorePercent = (CGFloat)self.numberOfStars ;
-    _hasAnimation = NO;//默认为NO
-    _allowIncompleteStar = NO;//默认为NO
+    _currentP = 0; //默认为0 这里可以设置默认星级
+    _scorePercent = (CGFloat) self.numberOfStars;
+    _hasAnimation = NO;        //默认为NO
+    _allowIncompleteStar = NO; //默认为NO
 
     self.foregroundStarView = [self createStarViewWithImage:FOREGROUND_STAR_IMAGE_NAME];
     self.backgroundStarView = [self createStarViewWithImage:BACKGROUND_STAR_IMAGE_NAME];
-    
+
     [self addSubview:self.backgroundStarView];
     [self addSubview:self.foregroundStarView];
-    
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTapRateView:)];
     tapGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tapGesture];
@@ -87,8 +86,7 @@
     UIView *view = [[UIView alloc] initWithFrame:self.bounds];
     view.clipsToBounds = YES;
     view.backgroundColor = [UIColor clearColor];
-    for (NSInteger i = 0; i < self.numberOfStars; i ++)
-    {
+    for (NSInteger i = 0; i < self.numberOfStars; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
         imageView.frame = CGRectMake(i * self.bounds.size.width / self.numberOfStars, 0, self.bounds.size.width / self.numberOfStars, self.bounds.size.height);
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -102,7 +100,7 @@
     __weak CWStarRateView *weakSelf = self;
     CGFloat animationTimeInterval = self.hasAnimation ? ANIMATION_TIME_INTERVAL : 0;
     [UIView animateWithDuration:animationTimeInterval animations:^{
-       weakSelf.foregroundStarView.frame = CGRectMake(0, 0, weakSelf.bounds.size.width * weakSelf.currentP   , weakSelf.bounds.size.height);
+        weakSelf.foregroundStarView.frame = CGRectMake(0, 0, weakSelf.bounds.size.width * weakSelf.currentP, weakSelf.bounds.size.height);
     }];
 }
 
@@ -112,7 +110,7 @@
     if (_scorePercent == scroePercent) {
         return;
     }
-    
+
     if (scroePercent < 0) {
         _scorePercent = 0;
     } else if (scroePercent > self.numberOfStars) {
@@ -120,11 +118,11 @@
     } else {
         _scorePercent = scroePercent;
     }
-    
+
     if ([self.delegate respondsToSelector:@selector(starRateView:scroePercentDidChange:)]) {
         [self.delegate starRateView:self scroePercentDidChange:scroePercent];
     }
-    
+
     [self setNeedsLayout];
 }
 

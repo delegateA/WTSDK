@@ -14,32 +14,30 @@
 - (void)addRightPlaceHolder:(NSString *)placeHolder;
 
 /** 认为是电话号码 按电话号码的限制输入 */
-@property (nonatomic,assign,getter = isTelePhone) BOOL telePhone;
+@property (nonatomic, assign, getter=isTelePhone) BOOL telePhone;
 
 /** 认为是身份证 加个button X */
-@property (nonatomic,assign,getter = isIdentityInput) BOOL identityInput;
+@property (nonatomic, assign, getter=isIdentityInput) BOOL identityInput;
 
 /** 纯数字形式的输入 */
-@property (nonatomic,assign,getter = isNumber) BOOL number;
+@property (nonatomic, assign, getter=isNumber) BOOL number;
 
 /** 数字形式的输入 可以有小数点 点后最多两位数 */
-@property (nonatomic,assign,getter = isNumber_dot) BOOL number_dot;
+@property (nonatomic, assign, getter=isNumber_dot) BOOL number_dot;
 
 /** 限制特殊字符的输入 */
-@property (nonatomic,assign,getter = isDisableSpecialChat) BOOL disableSpecialChat;
+@property (nonatomic, assign, getter=isDisableSpecialChat) BOOL disableSpecialChat;
 
 /** 必须是 ASCII字符 */
-@property (nonatomic,assign,getter = isMust_ASCII) BOOL must_ASCII;
+@property (nonatomic, assign, getter=isMust_ASCII) BOOL must_ASCII;
 
 /** 强制按字符长度计算限制文本的最大长度 (一个中文算两个字符！) */
-@property (nonatomic,assign) NSUInteger maxCharactersLength;
+@property (nonatomic, assign) NSUInteger maxCharactersLength;
 
 /** 强制按text.length长度计算限制文本的最大长度 */
-@property (nonatomic,assign) NSUInteger maxTextLength;
+@property (nonatomic, assign) NSUInteger maxTextLength;
 
-
-
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 
 @end

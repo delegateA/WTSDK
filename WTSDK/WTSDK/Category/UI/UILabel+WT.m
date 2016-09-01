@@ -11,8 +11,8 @@
 
 @implementation UILabel (WT)
 
-+(UILabel*)newSingleFrame:(CGRect)frame  title:(NSString*)title fontS:(CGFloat)fonts color:(UIColor*)color{
-    UILabel *_ = [[UILabel alloc]initWithFrame:frame];
++ (UILabel *)newSingleFrame:(CGRect)frame title:(NSString *)title fontS:(CGFloat)fonts color:(UIColor *)color {
+    UILabel *_ = [[UILabel alloc] initWithFrame:frame];
     _.font = [UIFont systemFontOfSize:fonts];
     if (color) {
         _.textColor = color;
@@ -23,14 +23,14 @@
 }
 
 /** 有删除线的 */
--(void)delLineStr:(NSString*)string{
+- (void)delLineStr:(NSString *)string {
     NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:string];
     [attri addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, string.length)];
     [self setAttributedText:attri];
 }
 
 /** 有下划线的 */
--(void)underlineStr:(NSString*)string{
+- (void)underlineStr:(NSString *)string {
     if (WTStrIsEmpty(string)) return;
     NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:string];
     [attri addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, string.length)];

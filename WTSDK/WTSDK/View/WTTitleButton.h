@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 张威庭. All rights reserved.
 //  标题按钮
 
-#import <UIKit/UIKit.h>
 #import "WTConst.h"
+#import <UIKit/UIKit.h>
 
 @interface WTTitleButton : UIButton
 

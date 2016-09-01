@@ -1,68 +1,54 @@
 
 #ifdef DEBUG //处于开发阶段
-#define WTLog(...)NSLog(@"%s %d\n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__] )
+#define NSLog(...) NSLog(@"%s %d\n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
 #else //处于发布阶段
-
-#define WTLog(...)
-
+#define NSLog(...)
 #endif
 
 //我要导入的东西哈哈哈哈哈😊😊😊😊😊😊😊😊😊😊😊😊😊
 #ifdef __OBJC__
 //basic frame 😅
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 //category
+#import "CALayer+WT.h"
 #import "NSArray+WT.h"
 #import "NSDate+WT.h"
-#import "NSObject+WT.h"
 #import "NSString+WT.h"
 #import "NSTimer+WT.h"
-#import "CALayer+WT.h"
 #import "UIBarButtonItem+WT.h"
-#import "UIControl+BlocksKit.h"
-#import "UIDevice+Hardware.h"
-#import "UIImage+animatedGIF.h"
 #import "UIImage+WT.h"
 #import "UILabel+WT.h"
 #import "UITextView+WT.h"
 #import "UIView+WT.h"
-#import "UIView+PressMenu.h"
 #import "UIViewController+WT.h"
-#import "UITableViewCell+WT.h"
 //tool
 #import "WTUtility.h"
-#import "WTNetworking.h"
-#import "WTTableDataDelegateTool.h"
 #import "Singleton.h"
 
 //View 😙😙😙😙😙😙😙😙😙😙
-#import "XHRealTimeBlur.h"
-#import "WTButton.h"
-#import "CustomIOSAlertView.h"
 #import "CWStarRateView.h"
+#import "CustomIOSAlertView.h"
+#import "UIButton+WT.h"
+#import "WTButton.h"
 #import "WTTextField.h"
 #import "WTTextView.h"
-
 
 #endif
 //导入的东西 END😊😊😊😊😊😊😊😊😊😊😊😊😊😊
 
-#define USDF     [NSUserDefaults standardUserDefaults]
-
-#define WTApp ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+#define USDF [NSUserDefaults standardUserDefaults]
 
 //获取最上层的window
 #define WTTopWindow [[UIApplication sharedApplication].windows lastObject]
 //弱引用申明
-#define WSELF       __weak __typeof(self) weakSelf = self;
+#define WSELF __weak __typeof(self) weakSelf = self;
 
-#define SFM(x)      ([NSString stringWithFormat:@"%@",(x)])
+#define SFM(x) ([NSString stringWithFormat:@"%@", (x)])
 
-
-#define WTAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
-#define WTUserDefaults  [NSUserDefaults standardUserDefaults]
+#define WTAppDelegate ((AppDelegate *) [[UIApplication sharedApplication] delegate])
+#define WTUserDefaults [NSUserDefaults standardUserDefaults]
 
 //状态栏高度
 #define WTStatus_Bar_Height 20
@@ -81,31 +67,28 @@
 #define WTDeviceWidth [UIScreen mainScreen].bounds.size.width
 #define PI 3.14159265358979323846
 
-#define WTStrIsEmpty(str) ([str isKindOfClass:[NSNull class]] || [str length]<1 ? YES : NO  || [str  isEqualToString:@"(null)"] || [str  isEqualToString:@"null"])
+#define WTStrIsEmpty(str) ([str isKindOfClass:[NSNull class]] || [str length] < 1 ? YES : NO || [str isEqualToString:@"(null)"] || [str isEqualToString:@"null"])
 //随机色
-#define WTRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+#define WTRandomColor [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1.0]
 
 // RGB颜色
-#define WTColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define WTColor(r, g, b) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1.0]
 
-#define WTAlphaColor(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define WTHexColor(X)         [UIColor colorWithRed:((float)((X & 0xFF0000) >> 16))/255.0 green:((float)((X & 0xFF00) >> 8))/255.0 blue:((float)(X & 0xFF))/255.0 alpha:1.0]
-#define WTHexColorA(X,A)      [UIColor colorWithRed:((float)((X & 0xFF0000) >> 16))/255.0 green:((float)((X & 0xFF00) >> 8))/255.0 blue:((float)(X & 0xFF))/255.0 alpha:A]
-
+#define WTAlphaColor(r, g, b, a) [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
+#define WTHexColor(X) [UIColor colorWithRed:((float) ((X & 0xFF0000) >> 16)) / 255.0 green:((float) ((X & 0xFF00) >> 8)) / 255.0 blue:((float) (X & 0xFF)) / 255.0 alpha:1.0]
+#define WTHexColorA(X, A) [UIColor colorWithRed:((float) ((X & 0xFF0000) >> 16)) / 255.0 green:((float) ((X & 0xFF00) >> 8)) / 255.0 blue:((float) (X & 0xFF)) / 255.0 alpha:A]
 
 // 是否为iOS9,获得系统版本
-#define iOS9 ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0)
+#define WTIOS9 ([[UIDevice currentDevice].systemVersion doubleValue] >= 9.0)
 
 // 是否为iOS7,获得系统版本
-#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+#define WTIOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
 
 // 是否为iOS8,获得系统版本
-#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
+#define WTIOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
 // 是否为iOS6,获得系统版本
-#define iOS6 ([[UIDevice currentDevice].systemVersion doubleValue] <=6.1)
+#define WTIOS6 ([[UIDevice currentDevice].systemVersion doubleValue] <= 6.1)
 
-#define iPhone4_Screen         (WTDeviceHeight == 480 ? 1 : 0)
-#define iPhone6_Screen         (WTDeviceWidth == 375 ? 1 : 0)
-#define iPhone6Plus_Screen         (WTDeviceWidth == 414 ? 1 : 0)
-
-
+#define iPhone4_Screen (WTDeviceHeight == 480 ? 1 : 0)
+#define iPhone6_Screen (WTDeviceWidth == 375 ? 1 : 0)
+#define iPhone6Plus_Screen (WTDeviceWidth == 414 ? 1 : 0)

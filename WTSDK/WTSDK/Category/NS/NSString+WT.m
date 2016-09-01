@@ -82,7 +82,7 @@
     attrs[NSFontAttributeName] = font;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
 
-    //        WTLog(@"IOS7以上的系统");
+    NSLog(@"IOS7以上的系统");
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
@@ -361,6 +361,38 @@ static NSDateFormatter *YYYYMMddDot;
     return NO;
 }
 
+// 验证字符串里面是否都是数字
+- (BOOL)isPureNumber {
+    NSUInteger length = [self length];
+    for (float i = 0; i < length; i++) {
+        // NSString * c=[mytimestr characterAtIndex:i];
+        NSString *STR = [self substringWithRange:NSMakeRange(i, 1)];
+        NSLog(@"%@", STR);
+        if ([STR isNumber]) {
+            continue;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+//是否是纯数字 这里可以有小数点
+- (BOOL)isFloat {
+    NSUInteger length = [self length];
+    for (float i = 0; i < length; i++) {
+        // NSString * c=[mytimestr characterAtIndex:i];
+        NSString *STR = [self substringWithRange:NSMakeRange(i, 1)];
+        NSLog(@"%@", STR);
+        if ([STR isNumber] || [STR isEqualToString:@"."]) {
+            continue;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 //去掉 表情符号
 - (NSString *)disableEmoji {
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -369,57 +401,6 @@ static NSDateFormatter *YYYYMMddDot;
                                                                  range:NSMakeRange(0, [self length])
                                                           withTemplate:@""];
     return modifiedString;
-}
-
-#pragma mark - 网站地址 转码 解码
-
-- (BOOL)isNetUrl {
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"http+:[^\\s]*"];
-    BOOL checked = [emailTest evaluateWithObject:self];
-    //    NSError *error;
-    //    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http+:[^\\s]*" options:0 error:&error];
-    //    if (regex != nil) {
-    //        NSTextCheckingResult *firstMatch=[regex firstMatchInString:self options:0 range:NSMakeRange(0, [self length])];
-    //        if (firstMatch) {
-    //            NSRange resultRange = [firstMatch rangeAtIndex:0];
-    ////            NSString *result = [self substringWithRange:resultRange];
-    //            //输出结果
-    ////            NSLog(@"%@",result);
-    //        }else {
-    ////            NSLog(@"no result");
-    //        }
-    //    }
-    return checked;
-}
-
-- (NSString *)urlEncode {
-    return [self urlEncodeUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding {
-    return (__bridge_transfer NSString *) CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                  (__bridge CFStringRef) self, NULL, (CFStringRef) @"!*'\"();:@&=+$,/?%#[]% ",
-                                                                                  CFStringConvertNSStringEncodingToEncoding(encoding));
-}
-
-- (NSString *)urlDecode {
-    return [self urlDecodeUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (NSString *)urlDecodeUsingEncoding:(NSStringEncoding)encoding {
-    return (__bridge_transfer NSString *) CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,
-                                                                                                  (__bridge CFStringRef) self, CFSTR(""), CFStringConvertNSStringEncodingToEncoding(encoding));
-}
-
-- (NSDictionary *)dictionaryFromURLParameters {
-    NSArray *pairs = [self componentsSeparatedByString:@"&"];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    for (NSString *pair in pairs) {
-        NSArray *kv = [pair componentsSeparatedByString:@"="];
-        NSString *val = [[kv objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [params setObject:val forKey:[kv objectAtIndex:0]];
-    }
-    return params;
 }
 
 + (NSString *)UUID {
@@ -431,22 +412,6 @@ static NSDateFormatter *YYYYMMddDot;
     return (__bridge_transfer NSString *) uuid;
 }
 
-//+ (NSMutableAttributedString *)generateAttributedStringFromString:(NSString *)string
-//                                                     withFontName:(NSString *)fontName
-//                                                         fontSize:(float)fontSize
-//                                                    textAlignment:(NSTextAlignment)alignment
-//                                                    lineBreakMode:(NSLineBreakMode)lineBreakMode
-//{
-//    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc]   initWithString:string];
-//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-//    style.lineSpacing = fontSize / 2;
-//    style.alignment = alignment;
-//    style.lineBreakMode = lineBreakMode;
-//    [mutableAttributedString addAttribute:(NSString*)kCTParagraphStyleAttributeName value:style range:NSMakeRange(0, [mutableAttributedString length])];
-//    [mutableAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:fontName size:fontSize] range:NSMakeRange(0, [mutableAttributedString length])];
-//    return mutableAttributedString;
-//}
-
 @end
 
 @implementation NSDictionary (WT)
@@ -455,17 +420,5 @@ static NSDateFormatter *YYYYMMddDot;
 - (NSString *)jsonStr {
     return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:self options:0 error:NULL] encoding:NSUTF8StringEncoding];
 }
-
-@end
-
-@implementation NSURL (WT)
-
-//前缀图片地址的
-//+(instancetype)imgPath:(NSString*)path{
-//    if (![path hasPrefix:imgHttp] && ![path hasPrefix:@"http"]) {
-//        return  [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imgHttp,path]];
-//    }
-//    return  [NSURL URLWithString:[NSString stringWithFormat:@"%@",path]];
-//}
 
 @end
