@@ -57,38 +57,16 @@ void after_Run(float time, void (^block)(void));
 + (BOOL)connectedToNetwork;
 
 /**
- *  导航栏目的返回键
- */
-//+(WTButton*)CreateNavBackBtn;
-
-/**
  *   分割 钱字符串
  */
 + (NSMutableString *)sepearteMoneyByString:(NSMutableString *)money;
-
-/**
- *   显示警告框  该方法显示 不会显示多个
- */
-+ (void)showAlertViewWithTitleText:(NSString *)title andMessage:(NSString *)message;
-
-+ (void)hideAlertView;
-
-/**
- *   显示警告框 内部回调
- */
-+ (void)showAlertViewWithTitle:(NSString *)title andMsg:(NSString *)message completionBlock:(void (^)(int index))completionBlock canceltitle:(NSString *)canceltitle otherBtn:(NSString *)otherbtn, ...;
 
 /**
  *  按钮点击事件
  */
 + (void)btnSuddenlyTouch:(UIButton *)senderBtn;
 
-/**
- *  计算label的高度
- */
-+ (CGFloat)getrowheight:(NSString *)text andFont:(NSInteger)font andWidth:(CGFloat)width;
 
-+ (CGFloat)getrowwidth:(NSString *)text andFont:(NSInteger)font andHeight:(CGFloat)height;
 
 /**
  *  随机

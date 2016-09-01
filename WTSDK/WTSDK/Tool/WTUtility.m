@@ -193,34 +193,6 @@ void after_Run(float time, void (^block)(void)) {
     return money;
 }
 
-//提示框
-+ (void)showAlertViewWithTitleText:(NSString *)title andMessage:(NSString *)message {
-    [[WTHandleCommon shareCommonHandleClass] showAlertView:title showMessage:message]; //单例用于解决同时显示多个alterView
-}
-
-+ (void)showAlertViewWithTitle:(NSString *)title andMsg:(NSString *)message completionBlock:(void (^)(int index))completionBlock canceltitle:(NSString *)canceltitle otherBtn:(NSString *)otherbtn, ... {
-    NSMutableArray *arr = [NSMutableArray array];
-    if (otherbtn != nil) {
-        [arr addObject:otherbtn];
-    }
-
-    va_list args;
-    va_start(args, otherbtn);
-    if (otherbtn) {
-        NSObject *other;
-        while ((other = va_arg(args, NSObject *))) {
-            //otherBtn最后面 要加 nil
-            [arr addObject:(NSString *) other];
-        }
-    }
-    va_end(args);
-    [[WTHandleCommon shareCommonHandleClass] showAlertView:title showMessage:message cancleBtn:canceltitle otherBtn:arr completionBlock:completionBlock];
-}
-
-+ (void)hideAlertView {
-    [[WTHandleCommon shareCommonHandleClass] hideAlertView];
-}
-
 //保证在scrollview上的Btn也有点击效果
 + (void)btnSuddenlyTouch:(UIButton *)senderBtn {
     senderBtn.selected = !senderBtn.isSelected;
@@ -229,17 +201,6 @@ void after_Run(float time, void (^block)(void)) {
     });
 }
 
-//计算单元格高度
-+ (CGFloat)getrowheight:(NSString *)text andFont:(NSInteger)font andWidth:(CGFloat)width {
-    CGRect rect = [text boundingRectWithSize:CGSizeMake(width, 8888) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:font] forKey:NSFontAttributeName] context:Nil];
-    return rect.size.height;
-}
-
-//MAXFLOAT
-+ (CGFloat)getrowwidth:(NSString *)text andFont:(NSInteger)font andHeight:(CGFloat)height {
-    CGRect rect = [text boundingRectWithSize:CGSizeMake(8888, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:font] forKey:NSFontAttributeName] context:Nil];
-    return rect.size.width;
-}
 
 //随机
 + (NSString *)randomStr {

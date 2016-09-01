@@ -23,6 +23,7 @@
 #import "UITextView+WT.h"
 #import "UIView+WT.h"
 #import "UIViewController+WT.h"
+
 //tool
 #import "WTUtility.h"
 #import "Singleton.h"
@@ -31,7 +32,6 @@
 #import "CWStarRateView.h"
 #import "CustomIOSAlertView.h"
 #import "UIButton+WT.h"
-#import "WTButton.h"
 #import "WTTextField.h"
 #import "WTTextView.h"
 
