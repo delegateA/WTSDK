@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-static const void *CompleteBlockKey = &CompleteBlockKey;
-static const void *FailBlockKey = &FailBlockKey;
+static const void *completeBlockKey = &completeBlockKey;
+static const void *failBlockKey = &failBlockKey;
 
 @interface UIImage ()
 
-@property (nonatomic, copy) void (^CompleteBlock)();
+@property (nonatomic, copy) void (^completeBlock)();
 
-@property (nonatomic, copy) void (^FailBlock)();
+@property (nonatomic, copy) void (^failBlock)();
 
 @end
 
@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger, ImageWaterDirect) {
     ImageWaterDirectBottomRight,
     //正中
     ImageWaterDirectCenter
-
+    
 };
 
 /**

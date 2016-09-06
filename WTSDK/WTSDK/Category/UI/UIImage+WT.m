@@ -16,12 +16,12 @@
  */
 + (UIImage *)captureWithView:(UIView *)view {
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, [UIScreen mainScreen].scale);
-
+    
     // IOS7及其后续版本
     if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
-                                                     [self methodSignatureForSelector:
-                                                               @selector(drawViewHierarchyInRect:afterScreenUpdates:)]];
+                                    [self methodSignatureForSelector:
+                                     @selector(drawViewHierarchyInRect:afterScreenUpdates:)]];
         [invocation setTarget:self];
         [invocation setSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)];
         CGRect arg2 = view.bounds;
@@ -32,7 +32,7 @@
     } else { // IOS7之前的版本
         [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     }
-
+    
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return screenshot;
@@ -83,7 +83,7 @@
     UIImage *resized = nil;
     CGFloat width = self.size.width * rate;
     CGFloat height = self.size.height * rate;
-
+    
     UIGraphicsBeginImageContext(CGSizeMake(width, height));
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetInterpolationQuality(context, quality);
@@ -166,9 +166,9 @@
                         completeBlock();
                     }
                 }
-                    failureBlock:^(NSError *error) {
-                        failBlock();
-                    }];
+                              failureBlock:^(NSError *error) {
+                                  failBlock();
+                              }];
                 return;
             }
             //如果不存在该相册创建
@@ -177,24 +177,24 @@
                 //创建相册
                 [assetsLibrary addAssetsGroupAlbumWithName:AlbumName resultBlock:^(ALAssetsGroup *group) {
                     [weakSelf assetForURL:assetURL
-                        resultBlock:^(ALAsset *asset) {
-                            if ([group addAsset:asset]) {
-                                completeBlock();
-                            }
-                        }
-                        failureBlock:^(NSError *error) {
-                            failBlock();
-                        }];
+                              resultBlock:^(ALAsset *asset) {
+                                  if ([group addAsset:asset]) {
+                                      completeBlock();
+                                  }
+                              }
+                             failureBlock:^(NSError *error) {
+                                 failBlock();
+                             }];
                 }
-                    failureBlock:^(NSError *error) {
-                        failBlock();
-                    }];
+                                              failureBlock:^(NSError *error) {
+                                                  failBlock();
+                                              }];
                 return;
             }
         }
-            failureBlock:^(NSError *error) {
-                failBlock();
-            }];
+                                   failureBlock:^(NSError *error) {
+                                       failBlock();
+                                   }];
     }];
 }
 
@@ -206,33 +206,33 @@
  */
 - (void)savedToAlbum:(void (^)())completeBlock failBlock:(void (^)())failBlock {
     UIImageWriteToSavedPhotosAlbum(self, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
-    self.CompleteBlock = completeBlock;
-    self.FailBlock = failBlock;
+    self.completeBlock = completeBlock;
+    self.failBlock = failBlock;
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
     if (error == nil) {
-        if (self.CompleteBlock != nil) self.CompleteBlock();
+        if (self.completeBlock != nil) self.completeBlock();
     } else {
-        if (self.FailBlock != nil) self.FailBlock();
+        if (self.failBlock != nil) self.failBlock();
     }
 }
 
 /*
  *  模拟成员变量
  */
-- (void (^)())FailBlock {
-    return objc_getAssociatedObject(self, FailBlockKey);
+- (void (^)())failBlock {
+    return objc_getAssociatedObject(self, failBlockKey);
 }
-- (void)setFailBlock:(void (^)())FailBlock {
-    objc_setAssociatedObject(self, FailBlockKey, FailBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setfailBlock:(void (^)())failBlock {
+    objc_setAssociatedObject(self, failBlockKey, failBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (void (^)())CompleteBlock {
-    return objc_getAssociatedObject(self, CompleteBlockKey);
+- (void (^)())completeBlock {
+    return objc_getAssociatedObject(self, completeBlockKey);
 }
 
-- (void)setCompleteBlock:(void (^)())CompleteBlock {
-    objc_setAssociatedObject(self, CompleteBlockKey, CompleteBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setcompleteBlock:(void (^)())completeBlock {
+    objc_setAssociatedObject(self, completeBlockKey, completeBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - function😇
@@ -299,32 +299,32 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     //结束图片图形上下文
     UIGraphicsEndImageContext();
-
+    
     return newImage;
 }
 
 - (UIImage *)fixOrientation {
-
+    
     // No-op if the orientation is already correct
     if (self.imageOrientation == UIImageOrientationUp) return self;
-
+    
     // We need to calculate the proper transformation to make the image upright.
     // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
     CGAffineTransform transform = CGAffineTransformIdentity;
-
+    
     switch (self.imageOrientation) {
         case UIImageOrientationDown:
         case UIImageOrientationDownMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
             transform = CGAffineTransformRotate(transform, M_PI);
             break;
-
+            
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformRotate(transform, M_PI_2);
             break;
-
+            
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
             transform = CGAffineTransformTranslate(transform, 0, self.size.height);
@@ -334,14 +334,14 @@
         case UIImageOrientationUpMirrored:
             break;
     }
-
+    
     switch (self.imageOrientation) {
         case UIImageOrientationUpMirrored:
         case UIImageOrientationDownMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.width, 0);
             transform = CGAffineTransformScale(transform, -1, 1);
             break;
-
+            
         case UIImageOrientationLeftMirrored:
         case UIImageOrientationRightMirrored:
             transform = CGAffineTransformTranslate(transform, self.size.height, 0);
@@ -353,7 +353,7 @@
         case UIImageOrientationRight:
             break;
     }
-
+    
     // Now we draw the underlying CGImage into a new context, applying the transform
     // calculated above.
     CGContextRef ctx = CGBitmapContextCreate(NULL, self.size.width, self.size.height,
@@ -369,12 +369,12 @@
             // Grr...
             CGContextDrawImage(ctx, CGRectMake(0, 0, self.size.height, self.size.width), self.CGImage);
             break;
-
+            
         default:
             CGContextDrawImage(ctx, CGRectMake(0, 0, self.size.width, self.size.height), self.CGImage);
             break;
     }
-
+    
     // And now we just create a new UIImage from the drawing context
     CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
     UIImage *img = [UIImage imageWithCGImage:cgimg];
