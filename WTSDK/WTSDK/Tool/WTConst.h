@@ -29,8 +29,6 @@
 #import "Singleton.h"
 
 //View 😙😙😙😙😙😙😙😙😙😙
-#import "CWStarRateView.h"
-#import "CustomIOSAlertView.h"
 #import "UIButton+WT.h"
 #import "WTTextField.h"
 #import "WTTextView.h"
