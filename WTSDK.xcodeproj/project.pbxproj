@@ -20,7 +20,6 @@
 		576E1D991C55D19B004342C5 /* UITextView+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D4C1C55D19B004342C5 /* UITextView+WT.m */; };
 		576E1D9B1C55D19B004342C5 /* UIView+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D501C55D19B004342C5 /* UIView+WT.m */; };
 		576E1D9C1C55D19B004342C5 /* UIViewController+WT.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D521C55D19B004342C5 /* UIViewController+WT.m */; };
-		576E1D9F1C55D19B004342C5 /* WTConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D5C1C55D19B004342C5 /* WTConst.m */; };
 		576E1DA31C55D19B004342C5 /* WTUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D641C55D19B004342C5 /* WTUtility.m */; };
 		576E1DAA1C55D19B004342C5 /* WTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D751C55D19B004342C5 /* WTTextField.m */; };
 		576E1DAB1C55D19B004342C5 /* WTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 576E1D771C55D19B004342C5 /* WTTextView.m */; };
@@ -63,7 +62,6 @@
 		576E1D521C55D19B004342C5 /* UIViewController+WT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WT.m"; sourceTree = "<group>"; };
 		576E1D5A1C55D19B004342C5 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		576E1D5B1C55D19B004342C5 /* WTConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConst.h; sourceTree = "<group>"; };
-		576E1D5C1C55D19B004342C5 /* WTConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConst.m; sourceTree = "<group>"; };
 		576E1D631C55D19B004342C5 /* WTUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUtility.h; sourceTree = "<group>"; };
 		576E1D641C55D19B004342C5 /* WTUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtility.m; sourceTree = "<group>"; };
 		576E1D741C55D19B004342C5 /* WTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTextField.h; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			children = (
 				576E1D5A1C55D19B004342C5 /* Singleton.h */,
 				576E1D5B1C55D19B004342C5 /* WTConst.h */,
-				576E1D5C1C55D19B004342C5 /* WTConst.m */,
 				576E1D631C55D19B004342C5 /* WTUtility.h */,
 				576E1D641C55D19B004342C5 /* WTUtility.m */,
 			);
@@ -318,7 +315,6 @@
 				576E1D7F1C55D19B004342C5 /* NSString+WT.m in Sources */,
 				576E1D961C55D19B004342C5 /* UIImage+WT.m in Sources */,
 				575489E61C21327B00841809 /* MBProgressHUD.m in Sources */,
-				576E1D9F1C55D19B004342C5 /* WTConst.m in Sources */,
 				576E1D991C55D19B004342C5 /* UITextView+WT.m in Sources */,
 				57C10D161C20F61F00511EBC /* AppDelegate.m in Sources */,
 				576E1D971C55D19B004342C5 /* UILabel+WT.m in Sources */,
