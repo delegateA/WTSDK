@@ -69,7 +69,7 @@ static const char *PlaceLabel = "PlaceLabel";
 }
 
 - (void)addRightPlaceHolder:(NSString *)placeHolder {
-    CGFloat W = [placeHolder __W__:12 H:20];
+    CGFloat W = [placeHolder widthWithFont:12 h:20];
     UILabel *La = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - W - 8, 0, W, self.frame.size.height)];
     La.text = placeHolder;
     La.textColor = [UIColor lightGrayColor];
