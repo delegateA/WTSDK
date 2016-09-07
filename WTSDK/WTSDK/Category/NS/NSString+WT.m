@@ -90,6 +90,16 @@
     return [self sizeWithFont:font maxW:MAXFLOAT];
 }
 
+//适合的高度 默认 systemFontOfSize:font
+- (CGFloat)heightWithFont:(NSInteger)font w:(CGFloat)w {
+    return [self boundingRectWithSize:CGSizeMake(w, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:font] } context:nil].size.height;
+}
+
+//适合的宽度 默认 systemFontOfSize:font
+- (CGFloat)widthWithFont:(NSInteger)font h:(CGFloat)h {
+    return [self boundingRectWithSize:CGSizeMake(MAXFLOAT, h) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:font] } context:nil].size.width;
+}
+
 //去空格
 - (NSString *)delSpace {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -166,16 +176,6 @@ static NSDateFormatter *YYYYMMddDot;
 }
 
 #pragma mark -
-
-//适合的高度 默认 systemFontOfSize:font]
-- (CGFloat)__H__:(NSInteger)font W:(CGFloat)W {
-    return [self boundingRectWithSize:CGSizeMake(W, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:font] } context:nil].size.height;
-}
-
-//适合的宽度 默认 systemFontOfSize:font]
-- (CGFloat)__W__:(NSInteger)font H:(CGFloat)H {
-    return [self boundingRectWithSize:CGSizeMake(MAXFLOAT, H) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:font] } context:nil].size.width;
-}
 
 //是否包含对应字符
 - (BOOL)containStr:(NSString *)subString {
